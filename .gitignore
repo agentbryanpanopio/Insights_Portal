@@ -118,3 +118,4 @@ error_screenshots/
 # package-lock.json
 # yarn.lock
 # pnpm-lock.yaml
+.env  .env.local 
