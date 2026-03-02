@@ -119,3 +119,4 @@ error_screenshots/
 # yarn.lock
 # pnpm-lock.yaml
 .env  .env.local 
+frontend/dist/ 
