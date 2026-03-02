@@ -1,6 +1,5 @@
 {
   "version": 2,
-  "name": "aiko-insights-portal",
   "builds": [
     {
       "src": "frontend/package.json",
@@ -10,37 +9,22 @@
       }
     },
     {
-      "src": "backend/server.js",
+      "src": "backend/index.js",
       "use": "@vercel/node"
     }
   ],
   "routes": [
     {
       "src": "/api/(.*)",
-      "dest": "backend/server.js"
-    },
-    {
-      "src": "/docs/(.*)",
-      "dest": "backend/server.js"
-    },
-    {
-      "src": "/skills/(.*)",
-      "dest": "backend/server.js"
-    },
-    {
-      "src": "/scripts/(.*)",
-      "dest": "backend/server.js"
+      "dest": "backend/index.js"
     },
     {
       "src": "/health",
-      "dest": "backend/server.js"
+      "dest": "backend/index.js"
     },
     {
       "src": "/(.*)",
       "dest": "frontend/dist/$1"
     }
-  ],
-  "env": {
-    "NODE_ENV": "production"
-  }
+  ]
 }

@@ -182,7 +182,9 @@ process.on('SIGINT', () => {
   process.exit(0);
 });
 
-// Start the server
-startServer();
+// Start the server (only for local development)
+if (process.env.NODE_ENV !== 'production') {
+  startServer();
+}
 
 export default app;
