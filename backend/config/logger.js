@@ -1,9 +1,4 @@
 import winston from 'winston';
-import path from 'path';
-import { fileURLToPath } from 'url';
-
-const __filename = fileURLToPath(import.meta.url);
-const __dirname = path.dirname(__filename);
 
 const { combine, timestamp, printf, colorize, errors } = winston.format;
 
@@ -21,39 +16,14 @@ const logger = winston.createLogger({
     logFormat
   ),
   transports: [
-    // Console transport
+    // Console transport only (for Vercel)
     new winston.transports.Console({
       format: combine(
         colorize(),
         logFormat
       ),
     }),
-    // File transport for errors
-    new winston.transports.File({
-      filename: path.join(__dirname, '../../logs/error.log'),
-      level: 'error',
-      maxsize: 5242880, // 5MB
-      maxFiles: 5,
-    }),
-    // File transport for all logs
-    new winston.transports.File({
-      filename: path.join(__dirname, '../../logs/combined.log'),
-      maxsize: 5242880, // 5MB
-      maxFiles: 5,
-    }),
   ],
 });
-
-// If not in production, log to console with colors
-if (process.env.NODE_ENV !== 'production') {
-  logger.add(new winston.transports.Console({
-    format: combine(
-      colorize(),
-      printf(({ level, message, timestamp }) => {
-        return `${timestamp} ${level}: ${message}`;
-      })
-    ),
-  }));
-}
 
 export default logger;
