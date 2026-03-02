@@ -229,3 +229,4 @@ For issues or questions:
 ---
 
 **Built with ❤️ using Claude AI, React, Node.js, and the Power BI MCP Server**
+"# Insights_Portal" 
